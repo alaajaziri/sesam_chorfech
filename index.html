@@ -108,6 +108,14 @@
             position: relative;
         }
 
+        /* ---------- Arabic header boost ---------- */
+        body.rtl .nav-link {
+            font-size: 1.05rem;   /* slightly larger */
+            font-weight: 600;     /* keep weight consistent */
+        }
+
+        /* ---------------------------------------- */
+
         .nav-link:hover {
             color: white;
             background: rgba(255, 255, 255, 0.15);
@@ -847,6 +855,23 @@
         .nav-menu.active .nav-link {
             color: #fff;
         }
+
+        /* Language selector styling */
+        #lang-select {
+            border: none;
+            background: transparent;
+            font: inherit;
+            color: inherit;
+            cursor: pointer;
+            padding: 4px 8px;
+        }
+        #lang-select:focus {
+            outline: 2px solid #8B4513;
+        }
+        /* RTL tweak – align dropdown to the right when Arabic is active */
+        body.rtl #lang-select {
+            direction: rtl;
+        }
     </style>
 </head>
 <body>
@@ -858,12 +883,20 @@
                 SESAM Chorfech
             </a>
             <ul class="nav-menu">
-                <li><a href="#accueil" class="nav-link">Accueil</a></li>
-                <li><a href="#services" class="nav-link">Nos Services</a></li>
-                <li><a href="#produits" class="nav-link">Produits</a></li>
-                <li><a href="#à-propos" class="nav-link">À propos</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#accueil" class="nav-link" data-i18n="nav_home">Accueil</a></li>
+                <li><a href="#services" class="nav-link" data-i18n="nav_services">Nos Services</a></li>
+                <li><a href="#produits" class="nav-link" data-i18n="nav_products">Produits</a></li>
+                <li><a href="#à-propos" class="nav-link" data-i18n="nav_about">À propos</a></li>
+                <li><a href="#contact" class="nav-link" data-i18n="nav_contact">Contact</a></li>
             </ul>
+
+            <!-- Language selector -->
+            <select id="lang-select" aria-label="Select language">
+                <option value="fr">FR</option>
+                <option value="en">EN</option>
+                <option value="ar">AR</option>
+            </select>
+
             <button class="mobile-menu-btn">☰</button>
         </div>
     </nav>
@@ -873,22 +906,17 @@
         <div class="hero-pattern"></div>
         <div class="hero-container">
             <div class="hero-content">
-                <div class="hero-badge">
-                    <span style="font-size: 0.8rem;">🌿</span>
-                    Depuis 1985 en Tunisie
-                </div>
-                <h1>Produits Agricoles de Qualité Supérieure</h1>
-                <p>SESAM Chorfech vous propose une gamme complète de produits agricoles traditionnels et de qualité. Semences, engrais, outils et équipements pour une agriculture prospère en Tunisie.</p>
-                <div class="hero-buttons">
-                    <a href="#produits" class="btn-primary">
-                        <span>🌾</span>
-                        Découvrir nos produits
-                    </a>
-                    <a href="#contact" class="btn-secondary">
-                        <span>📞</span>
-                        Nous contacter
-                    </a>
-                </div>
+                <div class="hero-badge" data-i18n="hero_badge">Depuis 1985 en Tunisie</div>
+                <h1 data-i18n="hero_title">Produits Agricoles de Qualité Supérieure</h1>
+                <p data-i18n="hero_desc">SESAM Chorfech vous propose une gamme complète de produits…</p>
+                <a href="#produits" class="btn-primary" data-i18n="hero_btn_products">
+                    <span>🌾</span>
+                    Découvrir nos produits
+                </a>
+                <a href="#contact" class="btn-secondary" data-i18n="hero_btn_contact">
+                    <span>📞</span>
+                    Nous contacter
+                </a>
             </div>
             <div class="hero-visual">
                 
@@ -904,39 +932,39 @@
                     <span>🏆</span>
                     Notre expertise
                 </div>
-                <h2>Pourquoi choisir SESAM Chorfech ?</h2>
+                <h2 data-i18n="feat_title">Pourquoi nous choisir ?</h2>
                 <p>40 ans d'expérience dans l'agriculture tunisienne à votre service</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">🌾</div>
-                    <h3>Produits de Qualité Certifiée</h3>
-                    <p>Large gamme de semences sélectionnées, engrais organiques et chimiques, produits phytosanitaires homologués pour une agriculture productive et durable.</p>
+                    <h3 data-i18n="feat_1_h">Qualité garantie</h3>
+                    <p data-i18n="feat_1_p">Nos produits sont sélectionnés avec soin.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🤝</div>
-                    <h3>Service Personnalisé</h3>
-                    <p>Conseil technique expert, accompagnement personnalisé de nos agronomes et support continu pour optimiser vos rendements agricoles.</p>
+                    <h3 data-i18n="feat_2_h">Support technique</h3>
+                    <p data-i18n="feat_2_p">Une équipe d’experts à votre service.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🚛</div>
-                    <h3>Livraison dans toute la Tunisie</h3>
-                    <p>Service de livraison rapide et sécurisé dans toutes les régions agricoles de Tunisie, avec possibilité de livraison à domicile ou sur exploitation.</p>
+            <h3 data-i18n="feat_3_h">Livraison dans toute la Tunisie</h3>
+            <p data-i18n="feat_3_p">Service de livraison rapide et sécurisé dans toutes les régions agricoles de Tunisie, avec possibilité de livraison à domicile ou sur exploitation.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">💰</div>
-                    <h3>Prix Compétitifs</h3>
-                    <p>Tarifs avantageux grâce à nos relations directes avec les fournisseurs, remises quantité et facilités de paiement pour nos clients fidèles.</p>
+            <h3 data-i18n="feat_4_h">Prix Compétitifs</h3>
+            <p data-i18n="feat_4_p">Tarifs avantageux grâce à nos relations directes avec les fournisseurs, remises quantité et facilités de paiement pour nos clients fidèles.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🔧</div>
-                    <h3>Matériel Agricole</h3>
-                    <p>Outils manuels de qualité, équipements d'irrigation, machines agricoles et pièces de rechange pour tous vos besoins techniques.</p>
+            <h3 data-i18n="feat_5_h">Matériel Agricole</h3>
+            <p data-i18n="feat_5_p">Outils manuels de qualité, équipements d'irrigation, machines agricoles et pièces de rechange pour tous vos besoins techniques.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📚</div>
-                    <h3>Conseil & Formation</h3>
-                    <p>Formation pratique sur les techniques agricoles modernes, conseils saisonniers et accompagnement pour améliorer vos pratiques culturales.</p>
+            <h3 data-i18n="feat_6_h">Conseil & Formation</h3>
+            <p data-i18n="feat_6_p">Formation pratique sur les techniques agricoles modernes, conseils saisonniers et accompagnement pour améliorer vos pratiques culturales.</p>
                 </div>
             </div>
         </div>
@@ -946,9 +974,9 @@
     <section class="products" id="produits" style="padding: 120px 0; background: white;">
         <div class="container">
             <div class="section-header">
-                <span class="section-badge">Nos Produits</span>
-                <h2>Nos Produits Agricoles</h2>
-                <p>Découvrez notre gamme de produits agricoles de haute qualité</p>
+                <span class="section-badge" data-i18n="prod_badge">Nos Produits</span>
+                <h2 data-i18n="prod_title">Nos Produits Agricoles</h2>
+                <p data-i18n="prod_desc">Découvrez notre gamme de produits agricoles de haute qualité</p>
             </div>
             <div class="products-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
                 <div class="product-card" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
@@ -974,11 +1002,11 @@
                 </div>
                 <div class="stat-item">
                     <div class="stat-number" data-count="500">0</div>
-                    <div class="stat-label">Clients satisfaits</div>
+                    <div class="stat-label" data-i18n="stat_clients">Clients satisfaits</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number" data-count="1000">0</div>
-                    <div class="stat-label">Produits disponibles</div>
+                    <div class="stat-label" data-i18n="stat_products">Produits disponibles</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">24</div>
@@ -992,43 +1020,40 @@
     <section class="services fade-in" id="services">
         <div class="container">
             <div class="section-header">
-                <div class="section-badge">
-                    <span>🌱</span>
-                    Nos services
-                </div>
-                <h2>Une Gamme Complète</h2>
-                <p>Tous vos besoins agricoles sous un même toit</p>
+                <div class="section-badge"><span>🌱</span><span data-i18n="serv_badge">Nos services</span></div>
+                <h2 data-i18n="serv_title">Une Gamme Complète</h2>
+                <p data-i18n="serv_desc">Tous vos besoins agricoles sous un même toit</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
                     <img src="images/Semences &amp; Plants.webp" alt="Semences &amp; Plants" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
-                    <h3>🌾 Semences & Plants</h3>
-                    <p>Semences certifiées de légumes, céréales, légumineuses et plants fruitiers adaptés au climat tunisien. Variétés traditionnelles et améliorées.</p>
+                    <h3 data-i18n="serv_seed_h">Semences & Plants</h3>
+                    <p data-i18n="serv_seed_p">La base de vos récoltes réussies.</p>
                 </div>
                 <div class="service-card">
                     <img src="images/land.jpeg" alt="Our Land" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
-                    <h3>🧪 Engrais & Nutrition</h3>
-                    <p>Engrais chimiques NPK, engrais organiques, amendements du sol et produits de nutrition végétale pour optimiser vos rendements.</p>
+                    <h3 data-i18n="serv_fert_h">Engrais & Nutrition</h3>
+                    <p data-i18n="serv_fert_p">Boostez la croissance de vos cultures.</p>
                 </div>
                 <div class="service-card">
                     <img src="images/Protection des Cultures Agricoles.png" alt="Protection des Cultures" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
-                    <h3>🛡️ Protection des Cultures</h3>
-                    <p>Produits phytosanitaires homologués, fongicides, herbicides, insecticides et produits biologiques pour protéger vos cultures.</p>
+                    <h3 data-i18n="serv_prot_h">Protection des Cultures</h3>
+                    <p data-i18n="serv_prot_p">Préservez vos champs des ravageurs.</p>
                 </div>
                 <div class="service-card">
                     <img src="images/outillage.webp" alt="Outillage Agricole" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
-                    <h3>🔧 Outillage Agricole</h3>
-                    <p>Outils manuels professionnels, équipements de jardinage, matériel de récolte et outils spécialisés pour chaque culture.</p>
+                    <h3 data-i18n="serv_tool_h">Outillage Agricole</h3>
+                    <p data-i18n="serv_tool_p">Matériel fiable pour un travail efficace.</p>
                 </div>
                 <div class="service-card">
                     <img src="images/irrigation-pivot-1-1024x682.jpg" alt="Irrigation & Arrosage" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
-                    <h3>💧 Irrigation & Arrosage</h3>
-                    <p>Systèmes d'irrigation goutte à goutte, asperseurs, tuyaux, raccords et équipements pour une gestion optimale de l'eau.</p>
+                    <h3 data-i18n="serv_irr_h">Irrigation & Arrosage</h3>
+                    <p data-i18n="serv_irr_p">Une utilisation optimale de l’eau.</p>
                 </div>
                 <div class="service-card">
                     <img src="images/Conseil Technique.webp" alt="Conseil Technique" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
-                    <h3>📋 Conseil Technique</h3>
-                    <p>Diagnostic de vos cultures, planning de traitement, conseils de fertilisation et suivi technique par nos experts agronomes.</p>
+                    <h3 data-i18n="serv_cons_h">Conseil Technique</h3>
+                    <p data-i18n="serv_cons_p">Accompagnement personnalisé.</p>
                 </div>
             </div>
         </div>
@@ -1039,13 +1064,13 @@
         <div class="container">
             <div class="contact-container">
                 <div class="contact-info">
-                    <h2>Contactez nos experts</h2>
-                    <p>Notre équipe d'agronomes expérimentés est à votre disposition pour vous conseiller et vous accompagner dans vos projets agricoles.</p>
+                    <h2 data-i18n="contact_title">Entrons en contact</h2>
+                    <p data-i18n="contact_desc">Notre équipe d'agronomes expérimentés est à votre disposition pour vous conseiller et vous accompagner dans vos projets agricoles.</p>
                     
                     <div class="contact-item">
                         <div class="contact-icon">📍</div>
                         <div>
-                            <div style="font-weight: 600; margin-bottom: 0.25rem;">Adresse</div>
+                            <div style="font-weight: 600; margin-bottom: 0.25rem;" data-i18n="label_address">Adresse</div>
                             <div>Route de Bizerte, Chorfech<br>2036 Tunis, Tunisie</div>
                         </div>
                     </div>
@@ -1053,7 +1078,7 @@
                     <div class="contact-item">
                         <div class="contact-icon">📞</div>
                         <div>
-                            <div style="font-weight: 600; margin-bottom: 0.25rem;">Téléphone</div>
+                            <div style="font-weight: 600; margin-bottom: 0.25rem;" data-i18n="label_phone">Téléphone</div>
                             <div>+216 71 XXX XXX</div>
                         </div>
                     </div>
@@ -1061,7 +1086,7 @@
                     <div class="contact-item">
                         <div class="contact-icon">✉️</div>
                         <div>
-                            <div style="font-weight: 600; margin-bottom: 0.25rem;">Email</div>
+                            <div style="font-weight: 600; margin-bottom: 0.25rem;" data-i18n="label_email">Email</div>
                             <div>contact@sesam-chorfech.tn</div>
                         </div>
                     </div>
@@ -1069,14 +1094,14 @@
                     <div class="contact-item">
                         <div class="contact-icon">⏰</div>
                         <div>
-                            <div style="font-weight: 600; margin-bottom: 0.25rem;">Horaires</div>
+                            <div style="font-weight: 600; margin-bottom: 0.25rem;" data-i18n="label_hours">Horaires</div>
                             <div>Lun-Ven: 7h30-17h30<br>Samedi: 8h-13h</div>
                         </div>
                     </div>
 
                     <!-- Facebook profile button -->
                     <div class="contact-item">
-                        <a href="https://www.facebook.com/profile.php?id=100063444229240" target="_blank" class="btn-primary" style="display:flex;align-items:center;gap:0.5rem;">
+                        <a href="https://www.facebook.com/profile.php?id=100063444229240" target="_blank" class="btn-primary" data-i18n="contact_btn_fb" style="display:flex;align-items:center;gap:0.5rem;">
                             <img src="images/facebook_logo.png" alt="Facebook" style="width:50px;height:50px;">
                             Suivez-nous sur Facebook
                         </a>
@@ -1086,18 +1111,18 @@
                 <div class="contact-form">
                     <form id="contactForm">
                         <div class="form-group">
-                            <input type="text" placeholder="Votre nom complet" required>
+                            <input type="text" placeholder="Votre nom complet" data-i18n-placeholder="ph_name" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Adresse email" required>
+                            <input type="email" placeholder="Adresse email" data-i18n-placeholder="ph_email" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" placeholder="Numéro de téléphone">
+                            <input type="tel" placeholder="Numéro de téléphone" data-i18n-placeholder="ph_phone">
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="Décrivez vos besoins agricoles..." required></textarea>
+                            <textarea placeholder="Décrivez vos besoins agricoles..." data-i18n-placeholder="ph_message" required></textarea>
                         </div>
-                        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+                        <button type="submit" class="btn-primary" data-i18n="contact_btn_submit" style="width: 100%; justify-content: center;">
                             <span>📧</span>
                             Envoyer ma demande
                         </button>
@@ -1119,41 +1144,269 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-section">
-                    <h3>SESAM Chorfech</h3>
-                    <p>Depuis 1985, SESAM Chorfech accompagne les agriculteurs tunisiens avec des produits de qualité et un service personnalisé. Votre partenaire de confiance pour une agriculture prospère.</p>
+                    <h3 data-i18n="foot_about_h">SESAM Chorfech</h3>
+                    <p data-i18n="foot_about_p">Depuis 1985, SESAM Chorfech accompagne les agriculteurs tunisiens avec des produits de qualité et un service personnalisé. Votre partenaire de confiance pour une agriculture prospère.</p>
                 </div>
                 <div class="footer-section">
-                    <h3>Nos Produits</h3>
-                    <p><a href="#">Semences & Plants</a></p>
-                    <p><a href="#">Engrais & Nutrition</a></p>
-                    <p><a href="#">Protection des cultures</a></p>
-                    <p><a href="#">Matériel agricole</a></p>
-                    <p><a href="#">Irrigation</a></p>
+                    <h3 data-i18n="foot_products_h">Nos Produits</h3>
+                    <p><a href="#" data-i18n="foot_link_seed">Semences & Plants</a></p>
+                    <p><a href="#" data-i18n="foot_link_fert">Engrais & Nutrition</a></p>
+                    <p><a href="#" data-i18n="foot_link_prot">Protection des cultures</a></p>
+                    <p><a href="#" data-i18n="foot_link_tool">Matériel agricole</a></p>
+                    <p><a href="#" data-i18n="foot_link_irr">Irrigation</a></p>
                 </div>
                 <div class="footer-section">
-                    <h3>Services</h3>
-                    <p><a href="#">Conseil technique</a></p>
-                    <p><a href="#">Livraison</a></p>
-                    <p><a href="#">Formation</a></p>
-                    <p><a href="#">Support client</a></p>
-                    <p><a href="#">Devis gratuit</a></p>
+                    <h3 data-i18n="foot_services_h">Services</h3>
+                    <p><a href="#" data-i18n="foot_link_advise">Conseil technique</a></p>
+                    <p><a href="#" data-i18n="foot_link_delivery">Livraison</a></p>
+                    <p><a href="#" data-i18n="foot_link_training">Formation</a></p>
+                    <p><a href="#" data-i18n="foot_link_support">Support client</a></p>
+                    <p><a href="#" data-i18n="foot_link_quote">Devis gratuit</a></p>
                 </div>
                 <div class="footer-section">
-                    <h3>Informations</h3>
-                    <p><a href="#">À propos</a></p>
-                    <p><a href="#">Nos références</a></p>
-                    <p><a href="#">Conditions de vente</a></p>
-                    <p><a href="#">Mentions légales</a></p>
-                    <p><a href="#">Contact</a></p>
+                    <h3 data-i18n="foot_info_h">Informations</h3>
+                    <p><a href="#" data-i18n="foot_link_about">À propos</a></p>
+                    <p><a href="#" data-i18n="foot_link_refs">Nos références</a></p>
+                    <p><a href="#" data-i18n="foot_link_terms">Conditions de vente</a></p>
+                    <p><a href="#" data-i18n="foot_link_legal">Mentions légales</a></p>
+                    <p><a href="#" data-i18n="foot_link_contact">Contact</a></p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 SESAM Chorfech. Tous droits réservés. | Produits agricoles de qualité en Tunisie</p>
+                <p data-i18n="footer_rights">© 2024 SESAM. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
 
     <script>
+const translations = {
+    fr: {
+        site_name: "SESAM",
+        nav_home: "Accueil",
+        nav_services: "Nos Services",
+        nav_products: "Produits",
+        nav_about: "À propos",
+        nav_contact: "Contact",
+        hero_badge: "Depuis 1985 en Tunisie",
+        hero_title: "Produits Agricoles de Qualité Supérieure",
+        hero_desc: "SESAM Chorfech vous propose une gamme complète …",
+        hero_btn_products: "Découvrir nos produits",
+        hero_btn_contact: "Nous contacter",
+        feat_title: "Pourquoi nous choisir ?",
+        feat_1_h: "Qualité garantie",
+        feat_1_p: "Nos produits sont sélectionnés avec soin.",
+        feat_2_h: "Support technique",
+        feat_2_p: "Une équipe d’experts à votre service.",
+        feat_3_h: "Livraison dans toute la Tunisie",
+        feat_3_p: "Service de livraison rapide et sécurisé dans toutes les régions agricoles de Tunisie, avec possibilité de livraison à domicile ou sur exploitation.",
+        feat_4_h: "Prix Compétitifs",
+        feat_4_p: "Tarifs avantageux grâce à nos relations directes avec les fournisseurs, remises quantité et facilités de paiement pour nos clients fidèles.",
+        feat_5_h: "Matériel Agricole",
+        feat_5_p: "Outils manuels de qualité, équipements d'irrigation, machines agricoles et pièces de rechange pour tous vos besoins techniques.",
+        feat_6_h: "Conseil & Formation",
+        feat_6_p: "Formation pratique sur les techniques agricoles modernes, conseils saisonniers et accompagnement pour améliorer vos pratiques culturales.",
+        stat_clients: "Clients satisfaits",
+        stat_products: "Produits disponibles",
+        serv_seed_h: "Semences & Plants",
+        serv_seed_p: "La base de vos récoltes réussies.",
+        serv_fert_h: "Engrais & Nutrition",
+        serv_fert_p: "Boostez la croissance de vos cultures.",
+        serv_prot_h: "Protection des Cultures",
+        serv_prot_p: "Préservez vos champs des ravageurs.",
+        serv_tool_h: "Outillage Agricole",
+        serv_tool_p: "Matériel fiable pour un travail efficace.",
+        serv_irr_h: "Irrigation & Arrosage",
+        serv_irr_p: "Une utilisation optimale de l’eau.",
+        serv_cons_h: "Conseil Technique",
+        serv_cons_p: "Accompagnement personnalisé.",
+        contact_title: "Entrons en contact",
+        contact_desc: "Notre équipe d'agronomes expérimentés est à votre disposition pour vous fournir des conseils personnalisés et des solutions agricoles efficaces.",
+        label_address: "Adresse",
+        label_phone: "Téléphone",
+        label_email: "Email",
+        label_hours: "Horaires",
+        contact_btn_fb: "Suivez-nous sur Facebook",
+        ph_name: "Votre nom complet",
+        ph_email: "Adresse email",
+        ph_phone: "Numéro de téléphone",
+        ph_message: "Décrivez vos besoins agricoles…",
+        contact_btn_submit: "Envoyer ma demande",
+        prod_badge: "Nos Produits",
+        prod_title: "Nos Produits Agricoles",
+        prod_desc: "Découvrez notre gamme…",
+        serv_badge: "Nos services",
+        serv_title: "Une Gamme Complète",
+        serv_desc: "Tous vos besoins…",
+        foot_about_h: "SESAM Chorfech",
+        foot_about_p: "Depuis 1985, SESAM Chorfech accompagne…",
+        foot_products_h: "Nos Produits",
+        foot_link_seed: "Semences & Plants",
+        foot_link_fert: "Engrais & Nutrition",
+        foot_link_prot: "Protection des cultures",
+        foot_link_tool: "Matériel agricole",
+        foot_link_irr: "Irrigation",
+        footer_rights: "© 2024 SESAM. Tous droits réservés."
+    },
+    en: {
+        site_name: "SESAM",
+        nav_home: "Home",
+        nav_services: "Our Services",
+        nav_products: "Products",
+        nav_about: "About Us",
+        nav_contact: "Contact",
+        hero_badge: "Since 1985 in Tunisia",
+        hero_title: "Premium Agricultural Products",
+        hero_desc: "SESAM Chorfech offers a complete range of products…",
+        hero_btn_products: "Discover our products",
+        hero_btn_contact: "Contact us",
+        feat_title: "Why choose us?",
+        feat_1_h: "Guaranteed quality",
+        feat_1_p: "Our products are carefully selected.",
+        feat_2_h: "Technical support",
+        feat_2_p: "A team of experts at your service.",
+        feat_3_h: "Delivery across Tunisia",
+        feat_3_p: "Fast and secure delivery service to all agricultural regions in Tunisia, with the option for home or farm delivery.",
+        feat_4_h: "Competitive Prices",
+        feat_4_p: "Advantageous rates thanks to direct relations with suppliers, quantity discounts and payment facilities for our loyal customers.",
+        feat_5_h: "Agricultural Equipment",
+        feat_5_p: "Quality hand tools, irrigation equipment, agricultural machinery and spare parts for all your technical needs.",
+        feat_6_h: "Advice & Training",
+        feat_6_p: "Practical training on modern farming techniques, seasonal advice and support to improve your cultivation practices.",
+        stat_clients: "Happy clients",
+        stat_products: "Products available",
+        serv_seed_h: "Seeds & Plants",
+        serv_seed_p: "Strong harvests start here.",
+        serv_fert_h: "Fertilizers & Nutrition",
+        serv_fert_p: "Boost crop growth.",
+        serv_prot_h: "Crop Protection",
+        serv_prot_p: "Keep pests away from your fields.",
+        serv_tool_h: "Agricultural Tools",
+        serv_tool_p: "Reliable gear for efficient work.",
+        serv_irr_h: "Irrigation & Watering",
+        serv_irr_p: "Use water wisely.",
+        serv_cons_h: "Technical Advice",
+        serv_cons_p: "Personalised guidance.",
+        contact_title: "Get in touch",
+        contact_desc: "Our team of experienced agronomists is here to advise and support you in your agricultural projects.",
+        label_address: "Address",
+        label_phone: "Phone",
+        label_email: "Email",
+        label_hours: "Hours",
+        contact_btn_fb: "Follow us on Facebook",
+        ph_name: "Your full name",
+        ph_email: "Email address",
+        ph_phone: "Phone number",
+        ph_message: "Describe your agricultural needs…",
+        contact_btn_submit: "Send my request",
+        prod_badge: "Our Products",
+        prod_title: "Agricultural Products",
+        prod_desc: "Discover our high-quality range",
+        serv_badge: "Our services",
+        serv_title: "A Complete Range",
+        serv_desc: "All your farming needs under one roof",
+        foot_about_h: "SESAM Chorfech",
+        foot_about_p: "Since 1985, SESAM Chorfech has supported …",
+        foot_products_h: "Products",
+        foot_link_seed: "Seeds & Plants",
+        foot_link_fert: "Fertilizers & Nutrition",
+        foot_link_prot: "Crop Protection",
+        foot_link_tool: "Agricultural Equipment",
+        foot_link_irr: "Irrigation",
+        foot_services_h: "Services",
+        foot_info_h: "Information",
+        foot_link_advise: "Technical advice",
+        foot_link_delivery: "Delivery",
+        foot_link_training: "Training",
+        foot_link_support: "Customer support",
+        foot_link_quote: "Free quote",
+        foot_link_about: "About us",
+        foot_link_refs: "Our references",
+        foot_link_terms: "Sales terms",
+        foot_link_legal: "Legal",
+        foot_link_contact: "Contact",
+        footer_rights: "© 2024 SESAM. All rights reserved."
+    },
+    ar: {
+        site_name: "سيسام",
+        nav_home: "الرئيسية",
+        nav_services: "خدماتنا",
+        nav_products: "المنتجات",
+        nav_about: "من نحن",
+        nav_contact: "اتصل",
+        hero_badge: "منذ 1985 في تونس",
+        hero_title: "منتجات زراعية عالية الجودة",
+        hero_desc: "تقدم لكم سيسام تشورفش مجموعة كاملة من المنتجات…",
+        hero_btn_products: "اكتشف منتجاتنا",
+        hero_btn_contact: "اتصل بنا",
+        feat_title: "لماذا تختارنا؟",
+        feat_1_h: "جودة مضمونة",
+        feat_1_p: "نختار منتجاتنا بعناية.",
+        feat_2_h: "دعم فني",
+        feat_2_p: "فريق من الخبراء في خدمتك.",
+        feat_3_h: "توصيل إلى جميع أنحاء تونس",
+        feat_3_p: "خدمة توصيل سريعة وآمنة إلى جميع المناطق الزراعية في تونس، مع إمكانية التوصيل إلى المنزل أو إلى المزرعة.",
+        feat_4_h: "أسعار تنافسية",
+        feat_4_p: "أسعار مميزة بفضل علاقاتنا المباشرة مع المورّدين، خصومات على الكميات وتسهيلات في الدفع لعملائنا المخلصين.",
+        feat_5_h: "معدات زراعية",
+        feat_5_p: "أدوات يدوية عالية الجودة، تجهيزات ري، آلات زراعية وقطع غيار لجميع احتياجاتك التقنية.",
+        feat_6_h: "استشارة وتدريب",
+        feat_6_p: "تدريب عملي على التقنيات الزراعية الحديثة، نصائح موسمية ومرافقة لتحسين ممارساتك الزراعية.",
+        stat_clients: "عملاء سعداء",
+        stat_products: "منتجات متاحة",
+        serv_seed_h: "بذور وشتلات",
+        serv_seed_p: "حصاد ناجح يبدأ من هنا.",
+        serv_fert_h: "أسمدة وتغذية",
+        serv_fert_p: "عزّز نمو محاصيلك.",
+        serv_prot_h: "حماية المحاصيل",
+        serv_prot_p: "حافظ على حقولك من الآفات.",
+        serv_tool_h: "أدوات زراعية",
+        serv_tool_p: "معدات موثوقة لعمل فعّال.",
+        serv_irr_h: "ري وسقاية",
+        serv_irr_p: "استخدام مثالي للمياه.",
+        serv_cons_h: "استشارات فنية",
+        serv_cons_p: "إرشاد مخصص.",
+        contact_title: "تواصل معنا",
+        contact_desc: "فريقنا من المهندسين الزراعيين جاهز لمساعدتك وتقديم المشورة في مشاريعك.",
+        label_address: "العنوان",
+        label_phone: "الهاتف",
+        label_email: "البريد الإلكتروني",
+        label_hours: "ساعات العمل",
+        contact_btn_fb: "تابعنا على فيسبوك",
+        ph_name: "اسمك الكامل",
+        ph_email: "عنوان البريد الإلكتروني",
+        ph_phone: "رقم الهاتف",
+        ph_message: "صف احتياجاتك الزراعية…",
+        contact_btn_submit: "أرسل طلبي",
+        prod_badge: "منتجاتنا",
+        prod_title: "المنتجات الزراعية",
+        prod_desc: "اكتشف مجموعتنا عالية الجودة",
+        serv_badge: "خدماتنا",
+        serv_title: "مجموعة كاملة",
+        serv_desc: "كل احتياجاتك الزراعية في مكان واحد",
+        foot_about_h: "سيسام شرفش",
+        foot_about_p: "منذ 1985، تدعم سيسام شرفش المزارعين التونسيين بمنتجات ذات جودة وخدمة مميزة.",
+        foot_products_h: "منتجاتنا",
+        foot_link_seed: "بذور وشتلات",
+        foot_link_fert: "الأسمدة والتغذية",
+        foot_link_prot: "حماية المحاصيل",
+        foot_link_tool: "معدات زراعية",
+        foot_link_irr: "الري",
+        foot_services_h: "الخدمات",
+        foot_info_h: "معلومات",
+        foot_link_advise: "استشارة فنية",
+        foot_link_delivery: "توصيل",
+        foot_link_training: "تدريب",
+        foot_link_support: "دعم العملاء",
+        foot_link_quote: "عرض مجاني",
+        foot_link_about: "من نحن",
+        foot_link_refs: "مراجعنا",
+        foot_link_terms: "شروط البيع",
+        foot_link_legal: "قانوني",
+        foot_link_contact: "اتصل",
+        footer_rights: "© 2024 سيسام. جميع الحقوق محفوظة."
+    }
+};
+
         // Enhanced smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1284,6 +1537,44 @@
                 document.body.style.opacity = '1';
             }, 100);
         });
+    // Language switcher functionality
+    const langSelect = document.getElementById('lang-select');
+
+    /**
+     * Replace every element that has a data-i18n attribute
+     * with the matching string from the translations object.
+     */
+    function applyLang(lang) {
+        // Translate inner text for elements with data-i18n
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                el.textContent = translations[lang][key];
+            }
+        });
+
+        // NEW: translate placeholders for inputs and textareas with data-i18n-placeholder
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+            const key = el.getAttribute('data-i18n-placeholder');
+            if (translations[lang] && translations[lang][key]) {
+                el.setAttribute('placeholder', translations[lang][key]);
+            }
+        });
+
+        // RTL handling for Arabic
+        if (lang === 'ar') {
+            document.body.classList.add('rtl');
+        } else {
+            document.body.classList.remove('rtl');
+        }
+    }
+
+    // Switch language when the user changes the dropdown
+    if (langSelect) {
+        langSelect.addEventListener('change', e => applyLang(e.target.value));
+        // initialise with the current value
+        applyLang(langSelect.value);
+    }
 </script>
 </body>
 </html>
