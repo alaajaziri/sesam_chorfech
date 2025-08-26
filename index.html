@@ -725,12 +725,39 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            /* Reduce hamburger button size */
             .mobile-menu-btn {
                 display: block;
+                font-size: 1.25rem;             /* slightly smaller icon */
             }
 
             .nav-menu {
                 display: none;
+            }
+
+            /* Compact the navbar container */
+            .nav-container {
+                padding: 0.5rem 1rem;           /* was larger */
+                gap: 0.5rem;                    /* tighten spacing between logo & menu */
+            }
+
+            /* Shrink logo text & badge */
+            .logo {
+                font-size: 1rem;                /* was ~1.25–1.5rem */
+                padding: 0.25rem 0.5rem;
+            }
+
+            .logo img {
+                height: 28px;                   /* keep icon proportional */
+            }
+
+            /* Compress dropped-down mobile menu items */
+            .nav-menu.active {
+                padding: 0.5rem 1rem;           /* less interior space */
+            }
+
+            .nav-link {
+                padding: 0.5rem 0;              /* narrower vertical spacing */
             }
 
             .hero-container {
