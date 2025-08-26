@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SESAM Chorfech - Produits Agricoles de Qualité en Tunisie</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #0F172A;
+            overflow-x: hidden;
+            background: #FEFEFE;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(34, 139, 34, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .navbar.scrolled {
+            background: rgba(34, 139, 34, 0.98);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-container {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;          /* larger, bolder */
+            font-weight: 900;         /* stronger weight */
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.4rem 1rem;     /* add internal space */
+            background: rgba(255,255,255,0.08); /* subtle glassy block */
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 14px;      /* rounded pill */
+            backdrop-filter: blur(6px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+        }
+
+        /* Ensure the logo image scales consistently */
+        .logo img {
+            height: 48px;             /* taller icon */
+            width: auto;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #228B22, #32CD32);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            font-family: 'Poppins', sans-serif;
+            padding: 0.75rem 1.25rem;
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: white;
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-1px);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #8B4513, #A0522D);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 25px -5px rgba(139, 69, 19, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px -5px rgba(139, 69, 19, 0.4);
+            background: linear-gradient(135deg, #A0522D, #8B4513);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #2E7D32 0%, #388E3C 50%, #4CAF50 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(76, 175, 80, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 195, 74, 0.1) 0%, transparent 50%);
+        }
+
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20 20h60v60h-60z" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></svg>');
+            background-size: 100px 100px;
+            animation: pattern-move 30s linear infinite;
+        }
+
+        @keyframes pattern-move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 100px); }
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(116, 204, 15, 0.3);
+            border: 1px solid rgba(111, 158, 57, 0.3);
+            color: #709e3c;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #FFFFFF 0%, #F1F5F9 50%, #E8F5E8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #8B4513, #A0522D);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 25px -5px rgba(139, 69, 19, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px -5px rgba(139, 69, 19, 0.4);
+            background: linear-gradient(135deg, #A0522D, #8B4513);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 1rem 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image {
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 8rem;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            animation: gentle-pulse 4s ease-in-out infinite;
+            position: relative;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: linear-gradient(45deg, transparent, rgba(139, 195, 74, 0.1), transparent);
+            border-radius: 50%;
+            animation: rotate 8s linear infinite;
+        }
+
+        @keyframes gentle-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #F1F8E9 0%, #E8F5E8 100%);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #E8F5E8, #C8E6C9);
+            border: 1px solid #A5D6A7;
+            color: #2E7D32;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #1B5E20;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-header p {
+            font-size: 1.25rem;
+            color: #388E3C;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 24px;
+            border: 1px solid #E8F5E8;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(46, 125, 50, 0.05);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.02), rgba(139, 195, 74, 0.02));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(46, 125, 50, 0.15);
+            border-color: #4CAF50;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #4CAF50, #388E3C);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            color: #1B5E20;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-card p {
+            color: #388E3C;
+            line-height: 1.7;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(135deg, #2E7D32 0%, #388E3C 100%);
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 70%, rgba(76, 175, 80, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(139, 195, 74, 0.1) 0%, transparent 50%);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-item {
+            padding: 2rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-item .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #8BC34A, #CDDC39);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-item .stat-label {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 120px 0;
+            background: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #FAFBFC, #FFFFFF);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #E8F5E8;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(76, 175, 80, 0.15);
+            border-color: #4CAF50;
+        }
+
+        .service-card h3 {
+            color: #1B5E20;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .service-card p {
+            color: #388E3C;
+            line-height: 1.7;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #1B5E20, #2E7D32);
+            color: white;
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(76, 175, 80, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 195, 74, 0.1) 0%, transparent 50%);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .contact-info p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(5px);
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #4CAF50, #388E3C);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.25rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4CAF50;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 120px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0D4818;
+            color: white;
+            padding: 80px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: #4CAF50;
+            font-weight: 700;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            line-height: 1.8;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #4CAF50;
+            transform: translateX(3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-image {
+                width: 100%;
+                max-width: 350px;
+                height: 350px;
+                font-size: 6rem;
+            }
+
+            .features-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f8e9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #4CAF50, #388E3C);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #388E3C, #2E7D32);
+        }
+        /* Mobile menu active state */
+        .nav-menu.active {
+            display: flex;
+            position: absolute;
+            top: 60px;
+            right: 1rem;
+            flex-direction: column;
+            gap: 0.5rem;
+            background: #4CAF50;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .nav-menu.active .nav-link {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="images/logo.png" alt="SESAM Chorfech Logo" style="height: 40px; width: auto;">
+                SESAM Chorfech
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#accueil" class="nav-link">Accueil</a></li>
+                <li><a href="#services" class="nav-link">Nos Services</a></li>
+                <li><a href="#produits" class="nav-link">Produits</a></li>
+                <li><a href="#à-propos" class="nav-link">À propos</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+ 
+    <!-- Hero Section -->
+    <section class="hero" id="accueil" style="background-image: url('images/agriculture.jpg'); background-size: cover; background-position: center;">
+        <div class="hero-pattern"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span style="font-size: 0.8rem;">🌿</span>
+                    Depuis 1985 en Tunisie
+                </div>
+                <h1>Produits Agricoles de Qualité Supérieure</h1>
+                <p>SESAM Chorfech vous propose une gamme complète de produits agricoles traditionnels et de qualité. Semences, engrais, outils et équipements pour une agriculture prospère en Tunisie.</p>
+                <div class="hero-buttons">
+                    <a href="#produits" class="btn-primary">
+                        <span>🌾</span>
+                        Découvrir nos produits
+                    </a>
+                    <a href="#contact" class="btn-secondary">
+                        <span>📞</span>
+                        Nous contacter
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features fade-in" id="à-propos" style="background-image: url('images/texture.jpeg'); background-blend-mode: overlay;">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <span>🏆</span>
+                    Notre expertise
+                </div>
+                <h2>Pourquoi choisir SESAM Chorfech ?</h2>
+                <p>40 ans d'expérience dans l'agriculture tunisienne à votre service</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌾</div>
+                    <h3>Produits de Qualité Certifiée</h3>
+                    <p>Large gamme de semences sélectionnées, engrais organiques et chimiques, produits phytosanitaires homologués pour une agriculture productive et durable.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Service Personnalisé</h3>
+                    <p>Conseil technique expert, accompagnement personnalisé de nos agronomes et support continu pour optimiser vos rendements agricoles.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚛</div>
+                    <h3>Livraison dans toute la Tunisie</h3>
+                    <p>Service de livraison rapide et sécurisé dans toutes les régions agricoles de Tunisie, avec possibilité de livraison à domicile ou sur exploitation.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Prix Compétitifs</h3>
+                    <p>Tarifs avantageux grâce à nos relations directes avec les fournisseurs, remises quantité et facilités de paiement pour nos clients fidèles.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Matériel Agricole</h3>
+                    <p>Outils manuels de qualité, équipements d'irrigation, machines agricoles et pièces de rechange pour tous vos besoins techniques.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Conseil & Formation</h3>
+                    <p>Formation pratique sur les techniques agricoles modernes, conseils saisonniers et accompagnement pour améliorer vos pratiques culturales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="produits" style="padding: 120px 0; background: white;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Nos Produits</span>
+                <h2>Nos Produits Agricoles</h2>
+                <p>Découvrez notre gamme de produits agricoles de haute qualité</p>
+            </div>
+            <div class="products-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <div class="product-card" style="background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                    <img src="images/products/484256914_1084990453625752_2964540985443536075_n.jpeg" alt="Product 1" style="width: 100%; height: 250px; object-fit: cover;">
+                </div>
+                <div class="product-card">
+                    <img src="images/products/484849090_1085466716911459_1542682906535471597_n.jpeg" alt="Product 2" style="width: 100%; height: 250px; object-fit: cover;">
+                </div>
+                <div class="product-card">
+                    <img src="images/products/484957529_1085466710244793_4840484648212257146_n.jpeg" alt="Product 3" style="width: 100%; height: 250px; object-fit: cover;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="40">0</div>
+                    <div class="stat-label">Années d'expérience</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="500">0</div>
+                    <div class="stat-label">Clients satisfaits</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="1000">0</div>
+                    <div class="stat-label">Produits disponibles</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24</div>
+                    <div class="stat-label">Gouvernorats desservis</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services fade-in" id="services">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <span>🌱</span>
+                    Nos services
+                </div>
+                <h2>Une Gamme Complète</h2>
+                <p>Tous vos besoins agricoles sous un même toit</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="images/Semences &amp; Plants.webp" alt="Semences &amp; Plants" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
+                    <h3>🌾 Semences & Plants</h3>
+                    <p>Semences certifiées de légumes, céréales, légumineuses et plants fruitiers adaptés au climat tunisien. Variétés traditionnelles et améliorées.</p>
+                </div>
+                <div class="service-card">
+                    <img src="images/land.jpeg" alt="Our Land" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
+                    <h3>🧪 Engrais & Nutrition</h3>
+                    <p>Engrais chimiques NPK, engrais organiques, amendements du sol et produits de nutrition végétale pour optimiser vos rendements.</p>
+                </div>
+                <div class="service-card">
+                    <img src="images/Protection des Cultures Agricoles.png" alt="Protection des Cultures" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
+                    <h3>🛡️ Protection des Cultures</h3>
+                    <p>Produits phytosanitaires homologués, fongicides, herbicides, insecticides et produits biologiques pour protéger vos cultures.</p>
+                </div>
+                <div class="service-card">
+                    <img src="images/outillage.webp" alt="Outillage Agricole" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
+                    <h3>🔧 Outillage Agricole</h3>
+                    <p>Outils manuels professionnels, équipements de jardinage, matériel de récolte et outils spécialisés pour chaque culture.</p>
+                </div>
+                <div class="service-card">
+                    <img src="images/irrigation-pivot-1-1024x682.jpg" alt="Irrigation & Arrosage" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
+                    <h3>💧 Irrigation & Arrosage</h3>
+                    <p>Systèmes d'irrigation goutte à goutte, asperseurs, tuyaux, raccords et équipements pour une gestion optimale de l'eau.</p>
+                </div>
+                <div class="service-card">
+                    <img src="images/Conseil Technique.webp" alt="Conseil Technique" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
+                    <h3>📋 Conseil Technique</h3>
+                    <p>Diagnostic de vos cultures, planning de traitement, conseils de fertilisation et suivi technique par nos experts agronomes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact fade-in" id="contact">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Contactez nos experts</h2>
+                    <p>Notre équipe d'agronomes expérimentés est à votre disposition pour vous conseiller et vous accompagner dans vos projets agricoles.</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <div style="font-weight: 600; margin-bottom: 0.25rem;">Adresse</div>
+                            <div>Route de Bizerte, Chorfech<br>2036 Tunis, Tunisie</div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <div style="font-weight: 600; margin-bottom: 0.25rem;">Téléphone</div>
+                            <div>+216 71 XXX XXX</div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <div style="font-weight: 600; margin-bottom: 0.25rem;">Email</div>
+                            <div>contact@sesam-chorfech.tn</div>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-icon">⏰</div>
+                        <div>
+                            <div style="font-weight: 600; margin-bottom: 0.25rem;">Horaires</div>
+                            <div>Lun-Ven: 7h30-17h30<br>Samedi: 8h-13h</div>
+                        </div>
+                    </div>
+
+                    <!-- Facebook profile button -->
+                    <div class="contact-item">
+                        <a href="https://www.facebook.com/profile.php?id=100063444229240" target="_blank" class="btn-primary" style="display:flex;align-items:center;gap:0.5rem;">
+                            <img src="images/facebook_logo.png" alt="Facebook" style="width:50px;height:50px;">
+                            Suivez-nous sur Facebook
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Votre nom complet" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Adresse email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Numéro de téléphone">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Décrivez vos besoins agricoles..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+                            <span>📧</span>
+                            Envoyer ma demande
+                        </button>
+                    </form>
+                </div>
+            </div>
+        <!-- Google Map -->
+        <div class="google-map" style="margin-top: 2rem; width: 100%; height: 350px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3188.304984165048!2d10.0427224!3d36.9342961!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12e2d3adac0fca11%3A0x4e7f851be5cffea0!2sSESAM%20(Soci%C3%A9t%C3%A9%20%C3%89lite%20de%20Service%20Agricoles%20Modernes)!5e0!3m2!1sfr!2stn!4v1710000000001"
+                width="100%" height="100%" style="border:0;" allowfullscreen loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>SESAM Chorfech</h3>
+                    <p>Depuis 1985, SESAM Chorfech accompagne les agriculteurs tunisiens avec des produits de qualité et un service personnalisé. Votre partenaire de confiance pour une agriculture prospère.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Nos Produits</h3>
+                    <p><a href="#">Semences & Plants</a></p>
+                    <p><a href="#">Engrais & Nutrition</a></p>
+                    <p><a href="#">Protection des cultures</a></p>
+                    <p><a href="#">Matériel agricole</a></p>
+                    <p><a href="#">Irrigation</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <p><a href="#">Conseil technique</a></p>
+                    <p><a href="#">Livraison</a></p>
+                    <p><a href="#">Formation</a></p>
+                    <p><a href="#">Support client</a></p>
+                    <p><a href="#">Devis gratuit</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Informations</h3>
+                    <p><a href="#">À propos</a></p>
+                    <p><a href="#">Nos références</a></p>
+                    <p><a href="#">Conditions de vente</a></p>
+                    <p><a href="#">Mentions légales</a></p>
+                    <p><a href="#">Contact</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 SESAM Chorfech. Tous droits réservés. | Produits agricoles de qualité en Tunisie</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Enhanced navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Animated counter for stats
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(start);
+                }
+            }, 16);
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('[data-count]');
+                    counters.forEach(counter => {
+                        const target = parseInt(counter.getAttribute('data-count'));
+                        animateCounter(counter, target);
+                    });
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Enhanced form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const button = this.querySelector('button[type="submit"]');
+            const originalText = button.innerHTML;
+            
+            button.innerHTML = '<span>⏳</span>Envoi en cours...';
+            button.style.opacity = '0.7';
+            button.disabled = true;
+            
+            // Simulate form submission
+            setTimeout(() => {
+                button.innerHTML = '<span>✅</span>Message envoyé !';
+                button.style.background = 'linear-gradient(135deg, #4CAF50, #388E3C)';
+                
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.style.opacity = '1';
+                    button.disabled = false;
+                    button.style.background = 'linear-gradient(135deg, #8B4513, #A0522D)';
+                    this.reset();
+                }, 2000);
+            }, 1500);
+        });
+
+        // Parallax effect for hero background
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const heroPattern = document.querySelector('.hero-pattern');
+            if (heroPattern) {
+                heroPattern.style.transform = `translateY(${scrolled * 0.1}px)`;
+            }
+        });
+
+        // Mobile menu functionality
+        const navMenu = document.querySelector('.nav-menu');
+        const mobileBtn = document.querySelector('.mobile-menu-btn');
+        mobileBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            // toggle icon between ☰ and ✕
+            mobileBtn.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Add loading animation
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+</script>
+</body>
+</html>
